@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/chat")
-@CrossOrigin(origins = "*") // Allow cross-origin requests for frontend integration
+
 public class ChatController {
 
     @Autowired

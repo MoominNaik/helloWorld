@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,13 +24,13 @@ public class ChatService {
         if (message.getContent() == null || message.getContent().trim().isEmpty()) {
             throw new IllegalArgumentException("Message content cannot be null or empty");
         }
-        message.setTimestamp(LocalDateTime.now());
+    // timestamp removed
         return chatMessageRepository.save(message);
     }
 
     // Get all messages
     public List<ChatMessage> getAllMessages() {
-        return chatMessageRepository.findAllByOrderByTimestampDesc();
+    return chatMessageRepository.findAll();
     }
 
     // Get message by ID
@@ -41,13 +40,13 @@ public class ChatService {
 
     // Get messages by sender
     public List<ChatMessage> getMessagesBySender(String sender) {
-        return chatMessageRepository.findBySenderOrderByTimestampDesc(sender);
+    return chatMessageRepository.findBySender(sender);
     }
 
     // Get recent messages (last N messages)
     public List<ChatMessage> getRecentMessages(int limit) {
-        List<ChatMessage> allMessages = chatMessageRepository.findAllByOrderByTimestampDesc();
-        return allMessages.subList(0, Math.min(limit, allMessages.size()));
+    List<ChatMessage> allMessages = chatMessageRepository.findAll();
+    return allMessages.subList(0, Math.min(limit, allMessages.size()));
     }
 
     // Search messages by content
@@ -66,6 +65,7 @@ public class ChatService {
 
     // Get messages after a specific timestamp
     public List<ChatMessage> getMessagesAfter(LocalDateTime timestamp) {
-        return chatMessageRepository.findByTimestampAfter(timestamp);
+    // timestamp removed
+    return List.of();
     }
 }

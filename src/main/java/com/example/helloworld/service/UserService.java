@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class UserService {
@@ -51,5 +53,10 @@ public class UserService {
             return passwordEncoder.matches(rawPassword, user.getPassword());
         }
         return false;
+    }
+
+    // Fetch all users
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 }
