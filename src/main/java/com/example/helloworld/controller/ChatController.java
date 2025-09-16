@@ -13,7 +13,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/chat")
+<<<<<<< HEAD
 @CrossOrigin(origins = "*") // Allow cross-origin requests for frontend integration
+=======
+
+>>>>>>> master
 public class ChatController {
 
     @Autowired
@@ -82,6 +86,7 @@ public class ChatController {
         }
     }
 
+<<<<<<< HEAD
     // GET /api/chat/messages/after/{timestamp} - Get messages after timestamp
     @GetMapping("/messages/after/{timestamp}")
     public ResponseEntity<List<ChatMessage>> getMessagesAfter(@PathVariable String timestamp) {
@@ -93,4 +98,6 @@ public class ChatController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+=======
+>>>>>>> master
 }

@@ -1,7 +1,10 @@
 package com.example.helloworld.model;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+>>>>>>> master
 
 @Entity
 @Table(name = "chat_messages")
@@ -17,19 +20,28 @@ public class ChatMessage {
     @Column(nullable = false, length = 1000)
     private String content;
 
+<<<<<<< HEAD
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
     // Default constructor
     public ChatMessage() {
         this.timestamp = LocalDateTime.now();
+=======
+
+    // Default constructor
+    public ChatMessage() {
+>>>>>>> master
     }
 
     // Constructor with parameters
     public ChatMessage(String sender, String content) {
         this.sender = sender;
         this.content = content;
+<<<<<<< HEAD
         this.timestamp = LocalDateTime.now();
+=======
+>>>>>>> master
     }
 
     // Getters and Setters
@@ -57,6 +69,7 @@ public class ChatMessage {
         this.content = content;
     }
 
+<<<<<<< HEAD
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
@@ -64,6 +77,8 @@ public class ChatMessage {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
+=======
+>>>>>>> master
 
     @Override
     public String toString() {
@@ -71,7 +86,10 @@ public class ChatMessage {
                 "id=" + id +
                 ", sender='" + sender + '\'' +
                 ", content='" + content + '\'' +
+<<<<<<< HEAD
                 ", timestamp=" + timestamp +
+=======
+>>>>>>> master
                 '}';
     }
 }

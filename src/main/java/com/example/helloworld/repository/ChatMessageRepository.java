@@ -6,7 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+>>>>>>> master
 import java.util.List;
 
 @Repository
@@ -15,6 +18,7 @@ public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> 
     // Find messages by sender
     List<ChatMessage> findBySender(String sender);
 
+<<<<<<< HEAD
     // Find messages by sender ordered by timestamp descending
     List<ChatMessage> findBySenderOrderByTimestampDesc(String sender);
 
@@ -30,4 +34,9 @@ public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> 
 
     // Find all messages ordered by timestamp
     List<ChatMessage> findAllByOrderByTimestampDesc();
+=======
+    // Custom query to find messages containing specific text
+    @Query("SELECT m FROM ChatMessage m WHERE LOWER(m.content) LIKE LOWER(CONCAT('%', :keyword, '%'))")
+    List<ChatMessage> findByContentContaining(@Param("keyword") String keyword);
+>>>>>>> master
 }

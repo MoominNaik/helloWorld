@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+>>>>>>> master
 import java.util.List;
 import java.util.Optional;
 
@@ -25,13 +28,21 @@ public class ChatService {
         if (message.getContent() == null || message.getContent().trim().isEmpty()) {
             throw new IllegalArgumentException("Message content cannot be null or empty");
         }
+<<<<<<< HEAD
         message.setTimestamp(LocalDateTime.now());
+=======
+    // timestamp removed
+>>>>>>> master
         return chatMessageRepository.save(message);
     }
 
     // Get all messages
     public List<ChatMessage> getAllMessages() {
+<<<<<<< HEAD
         return chatMessageRepository.findAllByOrderByTimestampDesc();
+=======
+    return chatMessageRepository.findAll();
+>>>>>>> master
     }
 
     // Get message by ID
@@ -41,13 +52,22 @@ public class ChatService {
 
     // Get messages by sender
     public List<ChatMessage> getMessagesBySender(String sender) {
+<<<<<<< HEAD
         return chatMessageRepository.findBySenderOrderByTimestampDesc(sender);
+=======
+    return chatMessageRepository.findBySender(sender);
+>>>>>>> master
     }
 
     // Get recent messages (last N messages)
     public List<ChatMessage> getRecentMessages(int limit) {
+<<<<<<< HEAD
         List<ChatMessage> allMessages = chatMessageRepository.findAllByOrderByTimestampDesc();
         return allMessages.subList(0, Math.min(limit, allMessages.size()));
+=======
+    List<ChatMessage> allMessages = chatMessageRepository.findAll();
+    return allMessages.subList(0, Math.min(limit, allMessages.size()));
+>>>>>>> master
     }
 
     // Search messages by content
@@ -64,8 +84,12 @@ public class ChatService {
         return false;
     }
 
+<<<<<<< HEAD
     // Get messages after a specific timestamp
     public List<ChatMessage> getMessagesAfter(LocalDateTime timestamp) {
         return chatMessageRepository.findByTimestampAfter(timestamp);
     }
+=======
+    // Get messages after a specific timestamp (removed, no timestamp field)
+>>>>>>> master
 }

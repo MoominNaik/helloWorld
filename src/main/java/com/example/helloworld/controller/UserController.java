@@ -10,10 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+<<<<<<< HEAD
 
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "*")
+=======
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+
+>>>>>>> master
 public class UserController {
     @Autowired
     private UserService userService;
@@ -72,4 +80,14 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
+<<<<<<< HEAD
+=======
+
+    // Fetch all users
+    @GetMapping("")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.findAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+>>>>>>> master
 }

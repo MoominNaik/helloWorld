@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
+<<<<<<< HEAD
+=======
+import java.util.List;
+
+>>>>>>> master
 @Service
 @Transactional
 public class UserService {
@@ -52,4 +57,12 @@ public class UserService {
         }
         return false;
     }
+<<<<<<< HEAD
+=======
+
+    // Fetch all users
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+>>>>>>> master
 }
