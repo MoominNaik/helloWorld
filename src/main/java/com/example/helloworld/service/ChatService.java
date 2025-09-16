@@ -63,9 +63,5 @@ public class ChatService {
         return false;
     }
 
-    // Get messages after a specific timestamp
-    public List<ChatMessage> getMessagesAfter(LocalDateTime timestamp) {
-    // timestamp removed
-    return List.of();
-    }
+    // Get messages after a specific timestamp (removed, no timestamp field)
 }

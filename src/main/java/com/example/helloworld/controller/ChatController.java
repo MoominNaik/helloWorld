@@ -82,15 +82,4 @@ public class ChatController {
         }
     }
 
-    // GET /api/chat/messages/after/{timestamp} - Get messages after timestamp
-    @GetMapping("/messages/after/{timestamp}")
-    public ResponseEntity<List<ChatMessage>> getMessagesAfter(@PathVariable String timestamp) {
-        try {
-            LocalDateTime dateTime = LocalDateTime.parse(timestamp);
-            List<ChatMessage> messages = chatService.getMessagesAfter(dateTime);
-            return new ResponseEntity<>(messages, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
 }
