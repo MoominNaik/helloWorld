@@ -1,3 +1,4 @@
+// ...existing code...
 package com.example.helloworld.controller;
 
 import com.example.helloworld.model.ChatMessage;
@@ -15,6 +16,12 @@ import java.util.Optional;
 @RequestMapping("/api/chat")
 
 public class ChatController {
+    // GET /api/chat/messages/recipient/{recipient} - Get messages by recipient
+    @GetMapping("/messages/recipient/{recipient}")
+    public ResponseEntity<List<ChatMessage>> getMessagesByRecipient(@PathVariable String recipient) {
+        List<ChatMessage> messages = chatService.getMessagesByRecipient(recipient);
+        return new ResponseEntity<>(messages, HttpStatus.OK);
+    }
 
     @Autowired
     private ChatService chatService;

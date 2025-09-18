@@ -18,17 +18,23 @@ public class Swipe {
     @Enumerated(EnumType.STRING)
     private SwipeDirection direction;
 
+    @Column(nullable = false)
+    private java.time.LocalDateTime timestamp;
+
     public enum SwipeDirection {
         LEFT, RIGHT
     }
 
-    public Swipe() {}
+    public Swipe() {
+        this.timestamp = java.time.LocalDateTime.now();
+    }
 
-    public Swipe(Long id, User user, Post post, SwipeDirection direction) {
+    public Swipe(Long id, User user, Post post, SwipeDirection direction, java.time.LocalDateTime timestamp) {
         this.id = id;
         this.user = user;
         this.post = post;
         this.direction = direction;
+        this.timestamp = timestamp != null ? timestamp : java.time.LocalDateTime.now();
     }
 
     // Getters and setters
@@ -43,4 +49,7 @@ public class Swipe {
 
     public SwipeDirection getDirection() { return direction; }
     public void setDirection(SwipeDirection direction) { this.direction = direction; }
+
+    public java.time.LocalDateTime getTimestamp() { return timestamp; }
+    public void setTimestamp(java.time.LocalDateTime timestamp) { this.timestamp = timestamp; }
 }

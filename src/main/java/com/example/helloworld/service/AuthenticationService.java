@@ -35,12 +35,13 @@ public class AuthenticationService {
 
         String token = jwtService.generateToken(user.getUsername());
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("token", token);
-        response.put("username", user.getUsername());
-        response.put("email", user.getEmail());
+    Map<String, Object> response = new HashMap<>();
+    response.put("token", token);
+    response.put("id", user.getId()); // Add user id to response
+    response.put("username", user.getUsername());
+    response.put("email", user.getEmail());
 
-        return response;
+    return response;
     }
 
     // Logout (in stateless JWT, this is mainly for client-side token removal)

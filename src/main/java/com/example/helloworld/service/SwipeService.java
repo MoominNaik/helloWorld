@@ -14,15 +14,18 @@ public class SwipeService {
 
     public Swipe swipe(User user, Post post, Swipe.SwipeDirection direction) {
         Optional<Swipe> existing = swipeRepository.findByUserAndPost(user, post);
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
         if (existing.isPresent()) {
             Swipe swipe = existing.get();
             swipe.setDirection(direction);
+            swipe.setTimestamp(now);
             return swipeRepository.save(swipe);
         }
         Swipe swipe = new Swipe();
         swipe.setUser(user);
         swipe.setPost(post);
         swipe.setDirection(direction);
+        swipe.setTimestamp(now);
         return swipeRepository.save(swipe);
     }
 

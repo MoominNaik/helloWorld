@@ -11,8 +11,12 @@ import java.util.List;
 @Repository
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
 
+
     // Find messages by sender
     List<ChatMessage> findBySender(String sender);
+
+    // Find messages by recipient
+    List<ChatMessage> findByRecipient(String recipient);
 
     // Custom query to find messages containing specific text
     @Query("SELECT m FROM ChatMessage m WHERE LOWER(m.content) LIKE LOWER(CONCAT('%', :keyword, '%'))")

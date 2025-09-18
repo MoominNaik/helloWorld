@@ -45,11 +45,12 @@ public class SecurityConfig {
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers("/api/users/register", "/api/users/login", "/api/users/logout").permitAll()
                 .requestMatchers("/api/users", "/api/chat/messages").permitAll()
+                .requestMatchers("/api/posts/**").permitAll()
                 .requestMatchers("/api/users/me").authenticated()
                 .requestMatchers("/api/chat/**").authenticated()
                 // Allow root and index.html for browser access
                 .requestMatchers("/", "/index.html").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             )
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -1,3 +1,4 @@
+// ...existing code...
 package com.example.helloworld.service;
 
 import com.example.helloworld.model.ChatMessage;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -24,10 +26,16 @@ public class ChatService {
         if (message.getContent() == null || message.getContent().trim().isEmpty()) {
             throw new IllegalArgumentException("Message content cannot be null or empty");
         }
-    // timestamp removed
+        if (message.getTimestamp() == null) {
+            message.setTimestamp(LocalDateTime.now());
+        }
         return chatMessageRepository.save(message);
     }
 
+        // Get messages by recipient
+        public List<ChatMessage> getMessagesByRecipient(String recipient) {
+            return chatMessageRepository.findByRecipient(recipient);
+        }
     // Get all messages
     public List<ChatMessage> getAllMessages() {
     return chatMessageRepository.findAll();
